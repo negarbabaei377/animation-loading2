@@ -1,0 +1,89 @@
+* , *::before , *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background-color: #222;
+}
+.loading{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.loading__item{
+    position: relative;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.loading__circle{
+    width: 40px;
+    height: 40px;
+    background:linear-gradient(to left , #ff0a54 0 , #fbff12 100%);
+    border-radius: 50%;
+    position: absolute;
+    animation: animate_circle 0.5s infinite alternate;
+}
+
+.loading__item:nth-child(2) .loading__circle{
+    animation-delay: 0.2s;
+}
+.loading__item:nth-child(3) .loading__circle{
+    animation-delay: 0.3s;
+}
+
+
+@keyframes animate_circle {
+    0%{
+        top:100px;
+        height: 15px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+    40%{
+        height: 40px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+    100%{
+        top: 0;
+        height: 40px;
+    }
+}
+
+
+.loading__shadow{
+    width: 40px;
+    height: 8px;
+    background:linear-gradient(to left , #ff0a54 0 , #fbff12 100%);
+    position: absolute;
+    top: 106px;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: animate_shadow 0.5s alternate infinite;
+}
+
+.loading__item:nth-child(2) .loading__shadow{
+    animation-delay: 0.2s;
+}
+.loading__item:nth-child(3) .loading__shadow{
+    animation-delay: 0.3s;
+}
+
+@keyframes animate_shadow {
+    0%{
+        transform: scaleX(1.7);
+        opacity: 0.1;
+    }
+    100%{
+        transform: scaleX(0.5);
+        opacity: 0.2;
+    }
+}
